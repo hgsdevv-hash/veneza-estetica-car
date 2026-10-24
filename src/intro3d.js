@@ -220,7 +220,7 @@ diffuseColor.rgb=mix(diffuseColor.rgb,mix(diffuseColor.rgb*.6,grime,.45)+spot*.2
   const padPos = new THREE.Vector3(0, 2, zA), padVel = new THREE.Vector3(), padTarget = new THREE.Vector3(), padN = new THREE.Vector3(0, 1, 0), nTarget = new THREE.Vector3();
   const ease = t => t < .5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
   const smooth = t => t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t);
-  const HOLD = 1.8, POL = 7, FIN = 4.2;
+  const HOLD = 1, POL = 4.5, FIN = 2.8;
   const orbit = (a, r, y) => tPos.set(Math.sin(a) * r * far, y, Math.cos(a) * r * far);
 
   V.phase(0, 'Pintura opaca, poeira e chuva ácida');
@@ -251,7 +251,7 @@ diffuseColor.rgb=mix(diffuseColor.rgb,mix(diffuseColor.rgb*.6,grime,.45)+spot*.2
     }
 
     if (T < HOLD) {
-      orbit(0.95 - T * 0.08, 7.2 - T * 0.5, 1.9 - T * 0.15); tLook.set(0, 0.45, 0);
+      orbit(0.95 - T * 0.14, 7.2 - T * 0.9, 1.9 - T * 0.27); tLook.set(0, 0.45, 0);
     } else if (T < HOLD + POL) {
       if (stage === 0) { stage = 1; V.phase(1, 'Polimento técnico, painel por painel'); pol.visible = true; }
       const p = (T - HOLD) / POL, e = ease(p);
@@ -263,7 +263,7 @@ diffuseColor.rgb=mix(diffuseColor.rgb,mix(diffuseColor.rgb*.6,grime,.45)+spot*.2
       const h = heightAt(x, z);
       const eps = 0.08;
       nTarget.set(-(heightAt(x + eps, z) - heightAt(x - eps, z)) / (2 * eps), 1, -(heightAt(x, z + eps) - heightAt(x, z - eps)) / (2 * eps)).normalize();
-      const lift = 0.7 * (1 - smooth((T - HOLD) / 0.6)) + 0.7 * smooth((p - 0.93) / 0.07);
+      const lift = 0.7 * (1 - smooth((T - HOLD) / 0.4)) + 0.7 * smooth((p - 0.93) / 0.07);
       padTarget.set(x, h + 0.004 + lift, z);
       if (stage === 1 && padPos.y > 1.9) { padPos.copy(padTarget); padPos.y += 0.7; stage = 1.5; }
       // critically damped spring: no snapping, even if the target moves fast
@@ -293,15 +293,15 @@ diffuseColor.rgb=mix(diffuseColor.rgb,mix(diffuseColor.rgb*.6,grime,.45)+spot*.2
         stage = 2; pol.visible = false; uniforms.uSweep.value = -9;
         V.phase(2, 'Brilho de volta');
         V.el.classList.add('shine');
-        setTimeout(() => V.el.classList.add('brand'), 1500);
+        setTimeout(() => V.el.classList.add('brand'), 800);
       }
       const q = T - HOLD - POL;
-      orbit(-0.5 + q * 0.32, 5.6, 0.75); tLook.set(0, 0.5, 0);
+      orbit(-0.5 + q * 0.45, 5.6, 0.75); tLook.set(0, 0.5, 0);
       scene.environmentRotation.y = q * 1.4;
       scene.environmentIntensity = 0.55 + Math.min(1, q) * 0.35;
       strip.position.z = 4 - q * 2.5;
       if (bloom) bloom.strength = 0.18 + Math.min(1, q / 1.2) * 0.22;
-      const on = q < 0.6 ? 0 : q < 0.75 ? 1 : q < 0.85 ? 0.2 : 1;
+      const on = q < 0.35 ? 0 : q < 0.48 ? 1 : q < 0.56 ? 0.2 : 1;
       lamps.forEach((m, i) => m.opacity = on * (i % 2 ? 0.6 : 0.9) * (useBloom ? 1 : 1.2));
       glow.forEach(m => m.emissiveIntensity = on * 2.5);
       if (q > FIN) V.endIntro();
@@ -316,7 +316,7 @@ diffuseColor.rgb=mix(diffuseColor.rgb,mix(diffuseColor.rgb*.6,grime,.45)+spot*.2
     }
     pGeo.attributes.position.needsUpdate = true;
 
-    const kk = 1 - Math.exp(-dt * 2.4);
+    const kk = 1 - Math.exp(-dt * 3.2);
     camPos.lerp(tPos, kk); look.lerp(tLook, kk);
     camera.position.copy(camPos); camera.lookAt(look);
     if (composer) composer.render(); else renderer.render(scene, camera);
