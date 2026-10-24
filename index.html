@@ -27,18 +27,28 @@ h1,h2,h3,.disp{font-family:Archivo,sans-serif;font-stretch:118%;letter-spacing:-
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
 
 /* ---------- INTRO ---------- */
-#intro{position:fixed;inset:0;z-index:100;background:#050505;transition:opacity 1s var(--ease),visibility 1s}
+#intro{position:fixed;inset:0;z-index:100;background:#050505;overflow:hidden;transition:opacity 1.1s var(--ease),visibility 1.1s}
 #intro.out{opacity:0;visibility:hidden}
+#intro .cam{position:absolute;inset:0;transform:scale(1.14);transition:transform 8s cubic-bezier(.2,.6,.2,1)}
+#intro.go .cam{transform:scale(1.02)}
+#intro.out .cam{transform:scale(1.22);filter:blur(6px);transition:transform 1.1s cubic-bezier(.6,0,.8,.4),filter 1.1s}
 #intro canvas{position:absolute;inset:0;width:100%;height:100%}
-#dirtyC{transition:opacity .6s}
-#intro .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 40%,rgba(0,0,0,.75));pointer-events:none}
-#intro .glint{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:250% 100%;background-position:120% 0;mix-blend-mode:overlay;opacity:0}
-#intro.shine .glint{animation:glint 1.2s ease-in-out forwards}
+#dirtyC{transition:opacity .7s}
+#sheenC{mix-blend-mode:screen}
+#lampC{mix-blend-mode:screen;opacity:0}
+#intro.lit #lampC{animation:lamp 1.1s forwards}
+@keyframes lamp{0%{opacity:0}12%{opacity:.9}20%{opacity:.15}32%{opacity:1}40%{opacity:.5}100%{opacity:1}}
+#intro .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 40%,rgba(0,0,0,.8));pointer-events:none}
+#intro .glint{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.6) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:250% 100%;background-position:120% 0;mix-blend-mode:overlay;opacity:0}
+#intro.shine .glint{animation:glint 1.3s ease-in-out forwards}
 @keyframes glint{0%{opacity:1;background-position:120% 0}100%{opacity:1;background-position:-30% 0}}
-.intro-brand{position:absolute;left:0;right:0;bottom:12vh;text-align:center;opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-#intro.shine .intro-brand{opacity:1;transform:none}
-.intro-brand b{display:block;font:850 clamp(44px,9vw,110px)/.9 Archivo;font-stretch:125%;letter-spacing:.02em;text-shadow:0 10px 40px rgba(0,0,0,.6)}
-.intro-brand span{display:block;font-size:13px;letter-spacing:.5em;color:var(--or);margin-top:12px}
+.intro-brand{position:absolute;left:0;right:0;bottom:12vh;text-align:center;pointer-events:none}
+.intro-brand b{display:block;font:850 clamp(48px,10vw,120px)/.9 Archivo;font-stretch:125%;letter-spacing:.02em;text-shadow:0 10px 40px rgba(0,0,0,.7)}
+.intro-brand b i{display:inline-block;font-style:normal;opacity:0;transform:translateY(45%);filter:blur(10px);transition:opacity .7s var(--ease),transform .9s var(--ease),filter .7s;transition-delay:calc(var(--i)*55ms)}
+.intro-brand span{display:block;font-size:13px;letter-spacing:.5em;color:var(--or);margin-top:14px;opacity:0;transition:opacity .8s .5s}
+#intro.brand .intro-brand b i{opacity:1;transform:none;filter:none}
+#intro.brand .intro-brand span{opacity:1}
+.bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--or);box-shadow:0 0 12px var(--or)}
 .steps{position:absolute;top:max(22px,4vh);left:50%;transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:99px;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);transition:opacity .5s}
 .steps span{font-size:12px;letter-spacing:.08em;padding:7px 12px;border-radius:99px;color:rgba(255,255,255,.55);white-space:nowrap;transition:background .35s,color .35s}
 .steps span b{font-weight:600;margin-right:6px;color:inherit}
@@ -47,7 +57,7 @@ h1,h2,h3,.disp{font-family:Archivo,sans-serif;font-stretch:118%;letter-spacing:-
 .steps span.done{color:#fff}
 .cap{position:absolute;left:0;right:0;bottom:max(70px,11vh);text-align:center;font:700 clamp(22px,3.4vw,36px)/1.15 Archivo;font-stretch:115%;text-shadow:0 4px 24px rgba(0,0,0,.8);padding:0 24px;transition:opacity .35s,transform .35s}
 .cap.swap{opacity:0;transform:translateY(6px)}
-#intro.shine .steps,#intro.shine .cap{opacity:0}
+#intro.brand .steps,#intro.brand .cap{opacity:0}
 @media(max-width:520px){.steps span{padding:6px 10px;font-size:11px}}
 .skip{position:absolute;bottom:24px;right:24px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);color:#ddd;padding:8px 14px;border-radius:99px;font:500 13px Inter;cursor:pointer;backdrop-filter:blur(6px)}
 .skip:hover{color:#fff;border-color:#fff}
@@ -177,14 +187,19 @@ footer a:hover{color:var(--tx)}
 <!-- reusable car shapes -->
 <!-- INTRO -->
 <div id="intro" aria-hidden="true">
-  <canvas id="cleanC"></canvas>
-  <canvas id="dirtyC"></canvas>
-  <canvas id="fxC"></canvas>
+  <div class="cam">
+    <canvas id="cleanC"></canvas>
+    <canvas id="dirtyC"></canvas>
+    <canvas id="sheenC"></canvas>
+    <canvas id="lampC"></canvas>
+    <canvas id="fxC"></canvas>
+  </div>
   <div class="vig"></div>
   <div class="glint"></div>
   <div class="steps"><span class="on"><b>1</b><i>Sujeira</i></span><span><b>2</b><i>Polimento</i></span><span><b>3</b><i>Brilho</i></span></div>
   <p class="cap" id="cap">Poeira e marcas de chuva ácida</p>
-  <div class="intro-brand"><b>VENEZA</b><span>ESTÉTICA CAR</span></div>
+  <div class="intro-brand"><b><i style="--i:0">V</i><i style="--i:1">E</i><i style="--i:2">N</i><i style="--i:3">E</i><i style="--i:4">Z</i><i style="--i:5">A</i></b><span>ESTÉTICA CAR</span></div>
+  <div class="bar" id="bar"></div>
   <button class="skip" id="skip">Pular</button>
 </div>
 
@@ -345,31 +360,44 @@ else{
   document.getElementById('skip').onclick=endIntro;
   const load=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
   Promise.all([load('media/farol-limpo.jpg'),load('media/farol-sujo.jpg')]).then(([a,b])=>runIntro(a,b),endIntro);
-  setTimeout(endIntro,12000);
+  setTimeout(endIntro,14000);
 }
 function runIntro(img,dirty){
   const dpr=Math.min(devicePixelRatio||1,1.5),W=innerWidth,H=innerHeight;
-  const [cc,dc,fc]=['cleanC','dirtyC','fxC'].map(id=>{const c=document.getElementById(id);c.width=W*dpr;c.height=H*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);return [c,x]});
+  const [cc,dc,sc,lc,fc]=['cleanC','dirtyC','sheenC','lampC','fxC'].map(id=>{const c=document.getElementById(id);c.width=W*dpr;c.height=H*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);return [c,x]});
   // cover-fit, keeping the headlight (about 42% across) in frame on narrow screens
   const r=Math.max(W/img.width,H/img.height),iw=img.width*r,ih=img.height*r,ix=Math.min(0,Math.max(W-iw,W*.5-iw*.42)),iy=(H-ih)/2;
   const cx=cc[1];cx.filter='contrast(1.12) saturate(1.1) brightness(1.05)';cx.drawImage(img,ix,iy,iw,ih);cx.filter='none';
   const d=dc[1];d.drawImage(dirty,ix,iy,iw,ih);
 
-  const steps=[...intro.querySelectorAll('.steps span')],cap=document.getElementById('cap');
-  const phase=(i,text)=>{steps.forEach((s,k)=>{s.classList.toggle('on',k===i);s.classList.toggle('done',k<i)});cap.classList.add('swap');setTimeout(()=>{cap.textContent=text;cap.classList.remove('swap')},300)};
+  // headlight glow, drawn once and switched on with a flicker at the end
+  const lx=ix+iw*.44,ly=iy+ih*.455,L=Math.min(iw,ih)*.19,l=lc[1];
+  let g=l.createRadialGradient(lx,ly,0,lx,ly,L*2.4);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.12,'rgba(255,248,235,.9)');g.addColorStop(.35,'rgba(255,215,170,.35)');g.addColorStop(1,'rgba(255,180,120,0)');
+  l.fillStyle=g;l.beginPath();l.arc(lx,ly,L*2.4,0,7);l.fill();
+  l.save();l.translate(lx,ly);l.scale(7,.09);g=l.createRadialGradient(0,0,0,0,0,L);g.addColorStop(0,'rgba(210,230,255,.9)');g.addColorStop(1,'rgba(210,230,255,0)');l.fillStyle=g;l.beginPath();l.arc(0,0,L,0,7);l.fill();l.restore();
 
-  // polishing pad: serpentine rows with orbital wobble, erasing the grime
-  const f=fc[1],R=Math.max(110,Math.min(W,H)*.2),rows=Math.max(3,Math.ceil(H/(R*1.5))),dur=3800;let last=null,t0;
+  const steps=[...intro.querySelectorAll('.steps span')],cap=document.getElementById('cap'),bar=document.getElementById('bar');
+  const phase=(i,text)=>{steps.forEach((s,k)=>{s.classList.toggle('on',k===i);s.classList.toggle('done',k<i)});cap.classList.add('swap');setTimeout(()=>{cap.textContent=text;cap.classList.remove('swap')},300)};
+  const HOLD=1400,DUR=4200,TAIL=3600,TOTAL=HOLD+DUR+TAIL,start=performance.now();
+  (function prog(now){if(ended)return;bar.style.width=Math.min(100,(now-start)/TOTAL*100)+'%';requestAnimationFrame(prog)})(start);
+  intro.classList.add('go');
+
+  // polishing pad: serpentine rows with orbital wobble, erasing the grime and leaving a wet sheen
+  const f=fc[1],sh=sc[1],R=Math.max(110,Math.min(W,H)*.2),rows=Math.max(3,Math.ceil(H/(R*1.5)));let last=null,t0,prev;
   d.globalCompositeOperation='destination-out';
-  const at=t=>{const rt=t*rows,row=Math.min(rows-1,Math.floor(rt)),p=rt-row,px=row%2?1-p:p,a=t*50;
+  const ease=t=>t<.5?2*t*t:1-(-2*t+2)**2/2;
+  const at=t=>{const e=ease(t),rt=e*rows,row=Math.min(rows-1,Math.floor(rt)),p=rt-row,px=row%2?1-p:p,a=t*46;
     return [-R*.4+px*(W+R*.8)+Math.cos(a)*R*.25,(row+.5)/rows*H+Math.sin(a)*R*.25]};
-  const stamp=(x,y)=>{const g=d.createRadialGradient(x,y,R*.4,x,y,R);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');d.fillStyle=g;d.beginPath();d.arc(x,y,R,0,7);d.fill()};
-  const pad=(x,y,rot)=>{const P=R*.62;
-    f.save();f.translate(x,y);
-    f.shadowColor='rgba(0,0,0,.6)';f.shadowBlur=30;f.shadowOffsetY=14;
+  const stamp=(x,y)=>{let g=d.createRadialGradient(x,y,R*.4,x,y,R);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');d.fillStyle=g;d.beginPath();d.arc(x,y,R,0,7);d.fill();
+    g=sh.createRadialGradient(x,y,0,x,y,R*.9);g.addColorStop(0,'rgba(255,255,255,.05)');g.addColorStop(1,'rgba(255,255,255,0)');sh.fillStyle=g;sh.beginPath();sh.arc(x,y,R*.9,0,7);sh.fill()};
+  const pad=(x,y,rot,tilt)=>{const P=R*.62;
+    f.save();f.translate(x,y);f.rotate(tilt);f.scale(1,.9);
+    f.shadowColor='rgba(0,0,0,.65)';f.shadowBlur=34;f.shadowOffsetY=18;
     f.fillStyle='#ff6a13';f.beginPath();f.arc(0,0,P,0,7);f.fill();f.shadowColor='transparent';
-    const fg=f.createRadialGradient(-P*.3,-P*.3,0,0,0,P);fg.addColorStop(0,'rgba(255,255,255,.35)');fg.addColorStop(1,'rgba(0,0,0,.25)');f.fillStyle=fg;f.beginPath();f.arc(0,0,P,0,7);f.fill();
-    f.rotate(rot);f.strokeStyle='rgba(0,0,0,.18)';f.lineWidth=2;
+    const fg=f.createRadialGradient(-P*.35,-P*.35,0,0,0,P);fg.addColorStop(0,'rgba(255,255,255,.4)');fg.addColorStop(1,'rgba(0,0,0,.28)');f.fillStyle=fg;f.beginPath();f.arc(0,0,P,0,7);f.fill();
+    f.rotate(rot);
+    f.strokeStyle='rgba(255,255,255,.35)';f.lineWidth=P*.08;f.lineCap='round';f.beginPath();f.arc(0,0,P*.78,0,1.3);f.stroke();
+    f.strokeStyle='rgba(0,0,0,.18)';f.lineWidth=2;
     for(let i=0;i<10;i++){f.rotate(Math.PI/5);f.beginPath();f.arc(P*.5,0,P*.38,-.9,.9);f.stroke()}
     f.fillStyle='#161618';f.beginPath();f.arc(0,0,P*.42,0,7);f.fill();
     f.fillStyle='#2a2a2e';f.beginPath();f.arc(0,0,P*.14,0,7);f.fill();
@@ -379,16 +407,27 @@ function runIntro(img,dirty){
   function frame(now){
     if(ended)return;
     t0??=now;
-    const t=Math.min(1,(now-t0)/dur),[x,y]=at(t);
+    const t=Math.min(1,(now-t0)/DUR),[x,y]=at(t);
+    // sheen slowly dries off
+    sh.save();sh.globalCompositeOperation='destination-out';sh.fillStyle='rgba(0,0,0,.035)';sh.fillRect(0,0,W,H);sh.restore();
     if(last){const n=Math.ceil(Math.hypot(x-last[0],y-last[1])/(R*.12));for(let i=1;i<=n;i++)stamp(last[0]+(x-last[0])*i/n,last[1]+(y-last[1])*i/n)}else stamp(x,y);
-    last=[x,y];
+    const vx=last?x-last[0]:0;last=[x,y];
     f.clearRect(0,0,W,H);
-    for(let i=0;i<4;i++){const a=Math.random()*7,v=2+Math.random()*4;parts.push({x:x+Math.cos(a)*R*.62,y:y+Math.sin(a)*R*.62,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1})}
-    for(let i=parts.length-1;i>=0;i--){const q=parts[i];q.x+=q.vx;q.y+=q.vy;q.vy+=.15;q.l-=.04;if(q.l<=0){parts.splice(i,1);continue}f.fillStyle=`rgba(255,255,255,${q.l*.7})`;f.beginPath();f.arc(q.x,q.y,1.5+q.l*2,0,7);f.fill()}
-    if(t<1){pad(x,y,now*.03);requestAnimationFrame(frame)}
-    else{f.clearRect(0,0,W,H);dc[0].style.opacity=0;phase(2,'Brilho de volta');setTimeout(()=>intro.classList.add('shine'),900);setTimeout(endIntro,3200)}
+    for(let i=0;i<5;i++){const a=Math.random()*7,v=2+Math.random()*5;parts.push({x:x+Math.cos(a)*R*.6,y:y+Math.sin(a)*R*.55,vx:Math.cos(a)*v+vx*.3,vy:Math.sin(a)*v,l:1})}
+    for(let i=parts.length-1;i>=0;i--){const q=parts[i];q.x+=q.vx;q.y+=q.vy;q.vy+=.18;q.vx*=.97;q.l-=.035;if(q.l<=0){parts.splice(i,1);continue}f.fillStyle=`rgba(255,255,255,${q.l*.75})`;f.beginPath();f.arc(q.x,q.y,1.2+q.l*2.2,0,7);f.fill()}
+    if(t<1){pad(x,y,now*.035,Math.max(-.25,Math.min(.25,vx*.01)));requestAnimationFrame(frame)}
+    else finale();
   }
-  setTimeout(()=>{phase(1,'Polimento técnico, direto no seu carro');requestAnimationFrame(frame)},1300);
+  function finale(){
+    f.clearRect(0,0,W,H);dc[0].style.opacity=0;
+    sc[0].style.transition='opacity 1.2s';sc[0].style.opacity=0;
+    phase(2,'Brilho de volta');
+    setTimeout(()=>intro.classList.add('shine'),300);
+    setTimeout(()=>intro.classList.add('lit'),800);
+    setTimeout(()=>intro.classList.add('brand'),1400);
+    setTimeout(endIntro,TAIL);
+  }
+  setTimeout(()=>{phase(1,'Polimento técnico, direto no seu carro');requestAnimationFrame(frame)},HOLD);
 }
 
 // reveal on scroll
