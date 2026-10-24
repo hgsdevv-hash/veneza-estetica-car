@@ -7,7 +7,21 @@
 <meta name="description" content="Estética automotiva delivery em Sumaré e região: polimento, correção de pintura, remoção de chuva ácida e vitrificação. Atendemos na sua casa ou na concessionária.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,700..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+// decide early whether the 3D intro runs, so its files start downloading while the page parses
+(function(){
+  var seen=false;try{seen=!!sessionStorage.getItem('vz-intro')}catch(e){}
+  var c=navigator.connection||{},gl=false;
+  try{gl=!!document.createElement('canvas').getContext('webgl2')}catch(e){}
+  var ok=!seen&&gl&&!c.saveData&&!/2g/.test(c.effectiveType||'')&&(navigator.deviceMemory||8)>=2&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.vzWant=ok;
+  if(!ok)return;
+  var h=document.head;
+  ['media/ferrari.glb','vendor/draco/draco_decoder.wasm'].forEach(function(u){var l=document.createElement('link');l.rel='preload';l.as='fetch';l.crossOrigin='anonymous';l.href=u;h.appendChild(l)});
+  var sc=document.createElement('script');sc.type='module';sc.src='intro3d.min.js';h.appendChild(sc);
+})();
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoWash","name":"Veneza Estética Car","telephone":"+55 19 99015-0008","areaServed":"Sumaré e região - SP","address":{"@type":"PostalAddress","addressLocality":"Sumaré","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/venezaesteticacar/"]}
 </script>
@@ -152,7 +166,7 @@ section{padding:110px 0}
 .split li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;color:var(--mut)}
 .split li b{color:var(--tx);font-weight:600}
 .split li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--or);margin-top:9px}
-.drop-art{aspect-ratio:4/5;border-radius:24px;border:1px solid var(--line);overflow:hidden;background:url(media/farol-limpo.jpg) 42% center/cover}
+.drop-art{aspect-ratio:4/5;border-radius:24px;border:1px solid var(--line);overflow:hidden;background:url(media/farol-limpo.webp) 42% center/cover}
 @media(max-width:860px){.drop-art{aspect-ratio:4/3}}
 .drop-art i{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,.05) 45%,transparent 60%);border:1px solid rgba(255,255,255,.12);animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px)}}
@@ -212,7 +226,7 @@ footer a:hover{color:var(--tx)}
 </nav>
 
 <header class="hero">
-  <video autoplay muted loop playsinline preload="metadata" poster="media/poster.jpg"><source src="media/trabalho.mp4" type="video/mp4"></video>
+  <video id="heroVid" muted loop playsinline preload="none" poster="media/poster.webp"><source src="media/trabalho-720.mp4" type="video/mp4" media="(max-width: 900px)"><source src="media/trabalho.mp4" type="video/mp4"></video>
   <div class="wrap">
     <p class="eyebrow rv">Estética automotiva delivery · Sumaré e região</p>
     <h1 class="rv" style="margin-top:18px">Seu carro brilhando <em>sem sair de casa.</em></h1>
@@ -257,9 +271,9 @@ footer a:hover{color:var(--tx)}
   <div class="wrap">
     <div class="head rv"><p class="eyebrow">Antes e depois</p><h2>Farol amarelado, verniz sem vida. Até a gente chegar.</h2><p>Honda Civic atendido no pátio da loja: restauração de faróis e polimento completo.</p></div>
     <div class="ba2">
-      <figure class="rv"><img src="media/antes.jpg" alt="Farol do Civic opaco e amarelado antes do serviço" loading="lazy"><figcaption>Antes</figcaption></figure>
-      <figure class="rv"><img src="media/depois.jpg" alt="Farol do Civic cristalino depois da restauração" loading="lazy"><figcaption>Depois</figcaption></figure>
-      <figure class="rv wide"><img src="media/processo.jpg" alt="Lixamento do farol com área protegida por fita" loading="lazy" style="object-position:center 40%"><figcaption>Processo · lixamento e polimento do farol</figcaption></figure>
+      <figure class="rv"><img src="media/antes.webp" alt="Farol do Civic opaco e amarelado antes do serviço" loading="lazy" decoding="async"><figcaption>Antes</figcaption></figure>
+      <figure class="rv"><img src="media/depois.webp" alt="Farol do Civic cristalino depois da restauração" loading="lazy" decoding="async"><figcaption>Depois</figcaption></figure>
+      <figure class="rv wide"><img src="media/processo.webp" alt="Lixamento do farol com área protegida por fita" loading="lazy" decoding="async" style="object-position:center 40%"><figcaption>Processo · lixamento e polimento do farol</figcaption></figure>
     </div>
   </div>
 </section>
@@ -332,7 +346,7 @@ footer a:hover{color:var(--tx)}
           <li>(19) 99015-0008<small>Sumaré e região</small></li>
         </ul>
       </div>
-      <figure><img src="media/depois.jpg" alt="Farol do Civic restaurado pela Veneza" loading="lazy"><figcaption>Farol restaurado · Civic</figcaption></figure>
+      <figure><img src="media/depois.webp" alt="Farol do Civic restaurado pela Veneza" loading="lazy" decoding="async"><figcaption>Farol restaurado · Civic</figcaption></figure>
     </div>
   </div>
 </section>
@@ -350,22 +364,27 @@ footer a:hover{color:var(--tx)}
 <script>
 // intro: 3D car being polished, driven by intro3d.js through window.vzIntro
 const intro=document.getElementById('intro');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let ended=false;
-function endIntro(){if(ended)return;ended=true;scrollTo(0,0);intro.classList.add('out');document.body.classList.remove('lock');reveal();setTimeout(()=>intro.remove(),1200)}
-let seen=false;try{seen=!!sessionStorage.getItem('vz-intro')}catch(e){}
-if(seen||reduce){intro.remove();document.body.classList.remove('lock');addEventListener('DOMContentLoaded',reveal)}
+function endIntro(){if(ended)return;ended=true;scrollTo(0,0);intro.classList.add('out');document.body.classList.remove('lock');reveal();startVideo();setTimeout(()=>intro.remove(),1200)}
+if(!window.vzWant){intro.remove();document.body.classList.remove('lock');addEventListener('DOMContentLoaded',()=>{reveal();startVideo()})}
 else{
   try{sessionStorage.setItem('vz-intro','1')}catch(e){}
   history.scrollRestoration='manual';scrollTo(0,0);
   document.getElementById('skip').onclick=endIntro;
   const steps=[...intro.querySelectorAll('.steps span')],cap=document.getElementById('cap'),bar=document.getElementById('bar');
-  let safety=setTimeout(endIntro,10000);
+  let safety=setTimeout(endIntro,8000); // model too slow to arrive: skip straight to the site
   window.vzIntro={
     el:intro,endIntro,isEnded:()=>ended,
     progress:p=>{bar.style.width=Math.min(100,p*100)+'%';clearTimeout(safety);safety=setTimeout(endIntro,4000)},
     phase:(i,text)=>{steps.forEach((s,k)=>{s.classList.toggle('on',k===i);s.classList.toggle('done',k<i)});cap.classList.add('swap');setTimeout(()=>{cap.textContent=text;cap.classList.remove('swap')},300)}
   };
+}
+
+// hero video: loads only after the intro, and pauses when scrolled away
+const heroVid=document.getElementById('heroVid');
+function startVideo(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)heroVid.play().catch(()=>{});else heroVid.pause()}).observe(heroVid);
 }
 
 // reveal on scroll
@@ -385,7 +404,5 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 });
 
 </script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
-<script type="module" src="intro3d.js"></script>
 </body>
 </html>
