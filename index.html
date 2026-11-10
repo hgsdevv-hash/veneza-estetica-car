@@ -3,28 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veneza Estética Car | Polimento a domicílio em Sumaré</title>
-<meta name="description" content="Estética automotiva delivery em Sumaré e região: polimento, correção de pintura, remoção de chuva ácida e vitrificação. Atendemos na sua casa ou na concessionária.">
+<title>Veneza Estética Car | Estética automotiva em domicílio em Sumaré</title>
+<meta name="description" content="Estética automotiva em domicílio em Sumaré e região: polimento, vitrificação, higienização, restauração de faróis e remoção de chuva ácida. A gente vai até você.">
 <meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="media/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,400..900;1,100..125,700..900&display=swap" rel="stylesheet">
-<script>
-// decide early whether the 3D intro runs, so its files start downloading while the page parses
-(function(){
-  var seen=false;try{seen=!!sessionStorage.getItem('vz-intro')}catch(e){}
-  var c=navigator.connection||{},gl=false;
-  try{gl=!!document.createElement('canvas').getContext('webgl2')}catch(e){}
-  var ok=!seen&&gl&&!c.saveData&&!/2g/.test(c.effectiveType||'')&&(navigator.deviceMemory||8)>=2&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
-  window.vzWant=ok;
-  if(!ok)return;
-  var h=document.head;
-  ['media/ferrari.glb','vendor/draco/draco_decoder.wasm'].forEach(function(u){var l=document.createElement('link');l.rel='preload';l.as='fetch';l.crossOrigin='anonymous';l.href=u;h.appendChild(l)});
-  var sc=document.createElement('script');sc.type='module';sc.src='intro3d.min.js';h.appendChild(sc);
-})();
-</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"AutoWash","name":"Veneza Estética Car","telephone":"+55 19 99015-0008","areaServed":"Sumaré e região - SP","address":{"@type":"PostalAddress","addressLocality":"Sumaré","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/venezaesteticacar/"]}
+{"@context":"https://schema.org","@type":"AutoWash","name":"Veneza Estética Car","telephone":"+55 19 99015-0008","areaServed":"Sumaré e região - SP","address":{"@type":"PostalAddress","addressLocality":"Sumaré","addressRegion":"SP","addressCountry":"BR"},"sameAs":["https://www.instagram.com/venezaesteticacar/","https://www.tiktok.com/@venezaesteticacar","https://www.youtube.com/@venezaesteticacar"]}
 </script>
 <style>
 :root{
@@ -34,10 +21,10 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--paper);font:17px/1.6 Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{overflow-x:clip}body{background:var(--ink);color:var(--paper);font:17px/1.6 Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
-img,video{display:block;max-width:100%}
+img,video{display:block;max-width:100%;height:auto}
 ::selection{background:var(--or);color:var(--ink)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .big{font-style:italic;font-weight:900;font-stretch:112%;text-transform:uppercase;line-height:.92;letter-spacing:-.015em}
@@ -58,46 +45,11 @@ img,video{display:block;max-width:100%}
 .btn.blk{background:var(--ink);color:var(--paper)}
 .btn.blk:hover{background:var(--paper);color:var(--ink)}
 
-/* ---------- INTRO (3D, driven by intro3d.js) ---------- */
-#intro{position:fixed;inset:0;z-index:100;background:#050505;overflow:hidden;transition:opacity 1.1s var(--ease),visibility 1.1s}
-#intro.out{opacity:0;visibility:hidden}
-#intro canvas{position:absolute;inset:0;width:100%;height:100%}
-.loading{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:opacity .4s}
-#intro.ready .loading{opacity:0}
-#intro:not(.ready) .steps,#intro:not(.ready) .cap{opacity:0}
-#gl{opacity:0;transition:opacity 1.2s}
-#intro.ready #gl{opacity:1}
-#intro .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 40%,rgba(0,0,0,.8));pointer-events:none}
-#intro .glint{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.6) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:250% 100%;background-position:120% 0;mix-blend-mode:overlay;opacity:0}
-#intro.shine .glint{animation:glint 1.3s ease-in-out forwards}
-@keyframes glint{0%{opacity:1;background-position:120% 0}100%{opacity:1;background-position:-30% 0}}
-.intro-brand{position:absolute;left:0;right:0;bottom:12vh;text-align:center;pointer-events:none}
-.intro-brand b{display:block;font:italic 900 clamp(52px,11vw,130px)/.9 Archivo;font-stretch:112%;text-shadow:0 10px 40px rgba(0,0,0,.7)}
-.intro-brand b i{display:inline-block;font-style:italic;opacity:0;transform:translateY(45%);filter:blur(10px);transition:opacity .7s var(--ease),transform .9s var(--ease),filter .7s;transition-delay:calc(var(--i)*55ms)}
-.intro-brand span{display:inline-block;margin-top:14px;background:var(--or);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.3em;padding:5px 12px;opacity:0;transition:opacity .8s .5s}
-#intro.brand .intro-brand b i{opacity:1;transform:none;filter:none}
-#intro.brand .intro-brand span{opacity:1}
-.bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--or)}
-.steps{position:absolute;top:max(22px,4vh);left:50%;transform:translateX(-50%);display:flex;gap:4px;transition:opacity .5s}
-.steps>span{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;background:rgba(0,0,0,.6);color:rgba(255,255,255,.55);white-space:nowrap;transform:skewX(-12deg);transition:background .35s,color .35s}
-.steps>span>span{display:inline-block;transform:skewX(12deg)}
-.steps b{margin-right:8px}
-.steps i{font-style:normal}
-.steps>span.on{background:var(--or);color:var(--ink)}
-.steps>span.done{color:#fff}
-.cap{position:absolute;left:0;right:0;bottom:max(70px,11vh);text-align:center;font:italic 900 clamp(22px,3.4vw,38px)/1.1 Archivo;font-stretch:112%;text-transform:uppercase;text-shadow:0 4px 24px rgba(0,0,0,.8);padding:0 24px;transition:opacity .35s,transform .35s}
-.cap.swap{opacity:0;transform:translateY(6px)}
-#intro.brand .steps,#intro.brand .cap{opacity:0}
-@media(max-width:520px){.steps>span{padding:7px 10px;font-size:11px}}
-.skip{position:absolute;bottom:22px;right:22px;background:var(--paper);border:0;color:var(--ink);padding:10px 16px;font:800 12px Archivo;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.skip:hover{background:var(--or)}
-
 /* ---------- NAV ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s}
 nav.solid{background:rgba(12,12,12,.92);backdrop-filter:blur(10px)}
 nav .wrap{display:flex;align-items:center;gap:28px;height:72px}
-.logo{display:flex;align-items:center;gap:10px;font:italic 900 22px/1 Archivo;font-stretch:112%;text-transform:uppercase}
-.logo .stripes{width:30px;height:14px;gap:3px}
+.logo img{height:46px;width:auto}
 .nav-links{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:15px}
 .nav-links a{opacity:.8;transition:opacity .2s,color .2s}
 .nav-links a:hover{opacity:1;color:var(--or)}
@@ -232,35 +184,131 @@ footer a:hover{color:var(--or)}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+
+/* ---------- ABERTURA: carro passando e deixando marca de pneu ---------- */
+#intro{position:fixed;inset:0;z-index:100;background:#141414;overflow:hidden;transition:opacity .6s var(--ease),visibility .6s}
+#intro.out{opacity:0;visibility:hidden}
+#intro canvas{position:absolute;inset:0;width:100%;height:100%}
+#intro .brand{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:14px;pointer-events:none}
+#intro .brand img{width:min(62vw,420px);opacity:0;transform:scale(1.15);filter:blur(8px);transition:opacity .45s var(--ease),transform .6s var(--ease),filter .45s}
+#intro .brand span{background:var(--or);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.3em;text-transform:uppercase;padding:5px 12px;opacity:0;transition:opacity .4s .15s}
+#intro.brand-in .brand img{opacity:1;transform:none;filter:none}
+#intro.brand-in .brand span{opacity:1}
+#intro.shake{animation:shake .32s linear}
+@keyframes shake{20%{transform:translate(-5px,3px)}40%{transform:translate(4px,-3px)}60%{transform:translate(-3px,2px)}80%{transform:translate(2px,-1px)}}
+.skip{position:absolute;bottom:22px;right:22px;background:var(--paper);border:0;color:var(--ink);padding:10px 16px;font:800 12px Archivo;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.skip:hover{background:var(--or)}
+
+/* serviços com link para o catálogo */
+.svc{grid-template-columns:repeat(3,1fr)}
+.svc .more{display:inline-block;margin-top:16px;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--or);border-bottom:2px solid var(--or);padding-bottom:2px}
+.svc .more:hover{color:var(--paper);border-color:var(--paper)}
+.svc button.more{background:none;border:0;border-bottom:2px solid var(--or);cursor:pointer;font-family:Archivo}
+
+/* catálogo */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.tabs button{min-height:46px;padding:0 18px;border:2px solid var(--ink);background:none;color:var(--ink);font:italic 900 15px Archivo;font-stretch:110%;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.tabs button:hover{background:#fff}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--or)}
+.panel{display:grid;gap:20px}
+.panel[hidden]{display:none}
+.box h3 small{white-space:nowrap}
+.it{align-items:center}
+.it-txt{min-width:0}
+.it ul{margin:8px 0 0 18px;color:#4a4842;font-size:15.5px;line-height:1.5}
+.it-pr{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.ag{min-height:42px;padding:0 16px;border:0;background:var(--or);color:var(--ink);font:800 13px Archivo;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s}
+.ag:hover{background:var(--ink);color:var(--or)}
+.ag:active{transform:translateY(2px)}
+.it.hot b::after{content:"Recomendado"}
+.var{padding:14px 20px;background:#fff4ec;font-size:15.5px;font-weight:700;color:#8a3a06}
+.verniz{background:var(--ink);color:var(--paper);padding:28px}
+.verniz h3{font:italic 900 clamp(22px,2.4vw,30px)/1.05 Archivo;font-stretch:110%;text-transform:uppercase;margin-bottom:12px}
+.verniz>p{color:#cfcdc7;max-width:52em}
+.vz2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.vz2>div{background:var(--ink2);border-top:4px solid var(--or);padding:20px}
+.vz2 b{font:italic 900 20px Archivo;text-transform:uppercase;display:block}
+.vz2 em{display:block;font-style:normal;color:var(--or);font-weight:700;font-size:14px;margin:4px 0 8px}
+.vz2 p{color:#cfcdc7;font-size:15px}
+.info{background:#fff;border:2px solid var(--ink)}
+.info summary{cursor:pointer;list-style:none;padding:16px 20px;font-weight:800;display:flex;justify-content:space-between;gap:12px}
+.info summary::-webkit-details-marker{display:none}
+.info summary::after{content:"+";font:900 22px/1 Archivo;color:var(--or-d)}
+.info[open] summary::after{content:"–"}
+.info ul{padding:0 20px 18px 38px;display:grid;gap:8px;font-size:15px;color:#3d3b36}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.pack{background:#fff;border:2px solid var(--ink);padding:24px;display:flex;flex-direction:column;gap:10px}
+.pack.hot{background:var(--ink);color:var(--paper);border-color:var(--or)}
+.pack h3{font:italic 900 26px/1 Archivo;font-stretch:110%;text-transform:uppercase}
+.pack.hot h3::after{content:"Recomendado";display:inline-block;margin-left:8px;vertical-align:middle;background:var(--or);color:var(--ink);font:800 10px Archivo;letter-spacing:.1em;padding:3px 6px}
+.pack ul{list-style:none;display:grid;gap:8px;font-size:15.5px;margin:6px 0}
+.pack li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #e3e0d8;padding-bottom:8px}
+.pack.hot li{border-color:#333}
+.pack li span:last-child{white-space:nowrap;font-weight:700}
+.pack-sum{font-size:14px;color:#6b6963}
+.pack.hot .pack-sum{color:var(--mut)}
+.pack-final{font:italic 900 36px/1 Archivo;font-stretch:108%;color:var(--or-d)}
+.pack.hot .pack-final{color:var(--or)}
+.pack-eco{font-weight:700;font-size:14px}
+.pack .ag{align-self:flex-start;margin-top:6px}
+@media(max-width:900px){.packs{grid-template-columns:1fr}.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .it{flex-direction:column;align-items:stretch}
+  .it-pr{justify-content:space-between}
+  .vz2{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr}
+  .box h3{flex-wrap:wrap;gap:4px}
+}
+
+/* sobre + onde */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.about .lead{color:#d6d4ce}
+.social{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.facts3{display:grid;gap:12px}
+.facts3 div{background:var(--ink2);padding:20px 22px;border-left:4px solid var(--or)}
+.facts3 b{display:block;font:italic 900 15px Archivo;text-transform:uppercase;letter-spacing:.06em;color:var(--or);margin-bottom:4px}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+
+/* agenda */
+.call{text-align:left}
+.call .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
+.call h2{font-size:clamp(40px,7vw,96px)}
+.call p{margin:22px 0 0}
+.form{background:var(--ink);color:var(--paper);padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:grid;gap:6px;font-weight:700;font-size:14px}
+.form .full{grid-column:1/-1}
+.form input,.form select,.form textarea{width:100%;min-height:50px;padding:12px 14px;border:2px solid #3a3a38;background:var(--ink2);color:var(--paper);font:500 16px Archivo;border-radius:0}
+.form textarea{min-height:90px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--or)}
+.form .btn{grid-column:1/-1;width:100%}
+.form small{grid-column:1/-1;color:var(--mut);font-size:14px}
+.form small a{color:var(--or);text-decoration:underline}
+.form.flash{animation:flash .9s var(--ease)}
+@keyframes flash{30%{box-shadow:0 0 0 6px var(--or)}}
+@media(max-width:860px){.call .wrap{grid-template-columns:1fr}.form{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="lock">
 
 <div id="intro" aria-hidden="true">
-  <canvas id="gl"></canvas>
-  <p class="loading">Preparando o carro</p>
-  <div class="vig"></div>
-  <div class="glint"></div>
-  <div class="steps"><span class="on"><span><b>1</b><i>Sujeira</i></span></span><span><span><b>2</b><i>Polimento</i></span></span><span><span><b>3</b><i>Brilho</i></span></span></div>
-  <p class="cap" id="cap"></p>
-  <div class="intro-brand"><b><i style="--i:0">V</i><i style="--i:1">E</i><i style="--i:2">N</i><i style="--i:3">E</i><i style="--i:4">Z</i><i style="--i:5">A</i></b><span>ESTÉTICA CAR</span></div>
-  <div class="bar" id="bar"></div>
+  <canvas id="road"></canvas>
+  <div class="brand"><img src="media/logo.webp" alt="" width="530" height="291"><span>Estética automotiva em domicílio</span></div>
   <button class="skip" id="skip">Pular</button>
 </div>
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#" class="logo"><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span>Veneza</a>
-    <div class="nav-links"><a href="#servicos">Serviços</a><a href="#como">Como funciona</a><a href="#precos">Preços</a><a href="#chuva">Chuva ácida</a></div>
-    <a class="btn or" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">Agendar</a>
+    <a href="#" class="logo" aria-label="Veneza Estética Car, início"><img src="media/logo.webp" alt="Veneza Estética Car" width="530" height="291"></a>
+    <div class="nav-links"><a href="#servicos">Serviços</a><a href="#precos">Preços</a><a href="#sobre">Sobre</a><a href="#agenda">Agenda</a></div>
+    <a class="btn or" href="#agenda">Agendar</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
     <div>
-      <span class="tag">Estética automotiva a domicílio · Sumaré-SP</span>
-      <div class="headline" id="headline" aria-label="Do fosco ao espelho.">
+      <span class="tag">Estética automotiva em domicílio · Sumaré-SP</span>
+      <h1 class="headline" id="headline" aria-label="Do fosco ao espelho.">
         <svg id="hsvg" aria-hidden="true">
           <defs>
             <filter id="dust" x="0" y="0" width="100%" height="100%">
@@ -281,92 +329,141 @@ footer a:hover{color:var(--or)}
           <g id="dull" fill="#34322e" filter="url(#dust)"></g>
           <g id="shiny" mask="url(#pm)"></g>
         </svg>
-        <p class="hint" id="hint"><b>Teste</b> passe o mouse no título para polir</p>
-      </div>
+      </h1>
+      <p class="hint" id="hint"><b>Teste</b> passe o mouse no título para polir</p>
       <div class="stripes" aria-hidden="true"><i></i><i></i><i></i></div>
-      <p class="lead">A <strong>Veneza Estética Car</strong> leva máquina, produto e iluminação até onde o carro estiver. Polimento técnico em três etapas, <strong>feito na sua garagem</strong>, no trabalho ou no pátio da concessionária.</p>
+      <p class="lead"><strong>Brilho de showroom na sua garagem.</strong> A Veneza Estética Car leva máquina, produto e iluminação até a sua casa. Não temos loja física: <strong>a gente vai até você</strong>, sem você precisar sair com o carro.</p>
       <div class="acts">
-        <a class="btn or" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a>
-        <a class="btn out" href="#precos">Ver preços</a>
+        <a class="btn or" href="#agenda">Agende seu horário</a>
+        <a class="btn out" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20na%20Veneza%20Est%C3%A9tica%20Car." target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
     </div>
     <figure class="shot rv">
       <video id="heroVid" muted loop playsinline preload="none" poster="media/poster.webp"><source src="media/trabalho-720.mp4" type="video/mp4" media="(max-width: 900px)"><source src="media/trabalho.mp4" type="video/mp4"></video>
       <span class="live">Trabalho real</span>
-      <figcaption><b>Honda Civic</b>Restauração de faróis e polimento, feitos no pátio da loja.</figcaption>
+      <figcaption><b>Honda Civic</b>Restauração de faróis e polimento.</figcaption>
     </figure>
   </div>
 </header>
 
 <div class="band" aria-hidden="true"><div>
-  <span>Polimento técnico</span><span>Correção de pintura</span><span>Chuva ácida</span><span>Vitrificação</span><span>Faróis</span><span>A domicílio</span>
-  <span>Polimento técnico</span><span>Correção de pintura</span><span>Chuva ácida</span><span>Vitrificação</span><span>Faróis</span><span>A domicílio</span>
+  <span>Limpeza profunda</span><span>Proteção de pintura</span><span>Brilho duradouro</span><span>Valoriza seu veículo</span><span>Em domicílio</span>
+  <span>Limpeza profunda</span><span>Proteção de pintura</span><span>Brilho duradouro</span><span>Valoriza seu veículo</span><span>Em domicílio</span>
 </div></div>
 
 <section id="servicos">
   <div class="wrap">
-    <div class="sh rv"><span class="tag">Serviços</span><h2 class="big">Cuidado em cada camada <span class="or">do verniz.</span></h2></div>
+    <div class="sh rv"><span class="tag">Serviços</span><h2 class="big">Cuidado em cada camada <span class="or">do verniz.</span></h2><p>Não temos loja física: atendemos em domicílio, na casa do cliente. Escolha o serviço e agende seu orçamento.</p></div>
     <div class="svc">
-      <article class="rv"><span class="tag">01</span><h3>Polimento técnico</h3><p>Corte, refino e lustro. Cada verniz (macio, médio ou duro) com o composto, a boina e o tempo certos.</p></article>
-      <article class="rv"><span class="tag">02</span><h3>Correção de pintura</h3><p>Tira riscos superficiais, marcas de lavagem e hologramas que deixam a pintura opaca.</p></article>
-      <article class="rv"><span class="tag">03</span><h3>Chuva ácida</h3><p>Remove as manchas de gota gravadas no verniz e no vidro antes que virem dano permanente.</p></article>
-      <article class="rv"><span class="tag">04</span><h3>Faróis</h3><p>Farol amarelado volta a ser cristal. Com vitrificação, o resultado dura muito mais.</p></article>
-      <article class="rv wide"><div><span class="tag dark">Lojistas</span><h3>Concessionárias e lojas de veículos</h3><p>Preparamos os carros no próprio pátio, antes da entrega ou da foto do anúncio. Condição especial por volume.</p></div><a class="btn blk" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Tenho%20uma%20loja%20e%20quero%20saber%20das%20condi%C3%A7%C3%B5es." target="_blank" rel="noopener">Falar sobre parceria</a></article>
+      <article class="rv"><span class="tag">01</span><h3>Lavagem detalhada</h3><p>Limpeza cuidadosa da carroceria, rodas, caixas de roda e frisos.</p><button type="button" class="more ag-link" data-svc="Lavagem detalhada">Agendar</button></article>
+      <article class="rv"><span class="tag">02</span><h3>Polimento técnico</h3><p>Remove riscos leves e devolve o brilho original da pintura.</p><a class="more" href="#precos" data-tab="polimento">Ver valores e o que está incluso</a></article>
+      <article class="rv"><span class="tag">03</span><h3>Vitrificação</h3><p>Proteção duradoura contra sol, chuva e sujeira.</p><a class="more" href="#precos" data-tab="vitrificacao">Ver opções e valores</a></article>
+      <article class="rv"><span class="tag">04</span><h3>Higienização</h3><p>Bancos, carpetes, teto e painel limpos e sem odores.</p><a class="more" href="#precos" data-tab="higienizacao">Ver pacotes e valores</a></article>
+      <article class="rv"><span class="tag">05</span><h3>Limpeza de motor</h3><p>Limpeza técnica e segura do cofre do motor.</p><button type="button" class="more ag-link" data-svc="Limpeza de motor">Agendar</button></article>
+      <article class="rv"><span class="tag">06</span><h3>Restauração de faróis</h3><p>Faróis amarelados ou opacos voltam a ficar transparentes.</p><a class="more" href="#precos" data-tab="farois">Ver opções e valores</a></article>
     </div>
   </div>
 </section>
 
 <section class="how" id="como">
   <div class="wrap">
-    <div class="sh rv"><span class="tag dark">Como funciona</span><h2 class="big">A estética vai até você.</h2><p>Sem fila, sem levar o carro, sem perder o dia. Você manda o endereço; a gente chega com tudo.</p></div>
+    <div class="sh rv"><span class="tag dark">Como funciona</span><h2 class="big">A estética vai até você.</h2><p>Sem fila, sem levar o carro, sem perder o dia. Você agenda e manda o endereço; a gente chega com tudo.</p></div>
     <div class="steps4">
-      <article class="rv"><span class="n">01</span><h3>Manda fotos</h3><p>Fotos do carro e o endereço no WhatsApp. Respondemos com o orçamento e o melhor horário.</p></article>
-      <article class="rv"><span class="n">02</span><h3>A gente vai</h3><p>Casa, condomínio, empresa ou concessionária. Basta um lugar na sombra e uma tomada.</p></article>
-      <article class="rv"><span class="n">03</span><h3>Polimento</h3><p>Painel por painel, sob luz, nas três etapas: corte, refino e lustro.</p></article>
-      <article class="rv"><span class="n">04</span><h3>Você confere</h3><p>Pintura nivelada, brilho de volta e proteção aplicada antes da gente ir embora.</p></article>
+      <article class="rv"><span class="n">01</span><h3>Você agenda</h3><p>Escolha o serviço, o dia e o horário na agenda do site. O pedido chega pronto no nosso WhatsApp.</p></article>
+      <article class="rv"><span class="n">02</span><h3>A gente vai</h3><p>Até a sua casa ou condomínio. Basta um lugar na sombra e uma tomada.</p></article>
+      <article class="rv"><span class="n">03</span><h3>O serviço</h3><p>Painel por painel, sob luz, com produto profissional e atenção a cada detalhe.</p></article>
+      <article class="rv"><span class="n">04</span><h3>Você confere</h3><p>Pintura com brilho de volta e proteção aplicada antes da gente ir embora.</p></article>
     </div>
   </div>
 </section>
 
 <section id="caso">
   <div class="wrap">
-    <div class="sh rv"><span class="tag">Antes e depois</span><h2 class="big">Farol amarelado? <span class="or">Não mais.</span></h2><p>Honda Civic atendido no pátio da loja: faróis opacos pelo sol e verniz sem vida. Restauração de faróis e polimento completo.</p></div>
+    <div class="sh rv"><span class="tag">Antes e depois</span><h2 class="big">Farol amarelado? <span class="or">Não mais.</span></h2><p>Honda Civic com faróis opacos pelo sol e verniz sem vida. Restauração de faróis e polimento completo. Mais resultados nos vídeos do nosso perfil.</p></div>
     <div class="case">
       <figure class="rv"><img src="media/antes.webp" alt="Farol do Civic opaco e amarelado antes do serviço" loading="lazy" decoding="async"><figcaption class="tag dark">Antes</figcaption></figure>
       <figure class="rv"><img src="media/depois.webp" alt="Farol do Civic cristalino depois da restauração" loading="lazy" decoding="async"><figcaption class="tag">Depois</figcaption></figure>
       <figure class="rv wide"><img src="media/processo.webp" alt="Lixamento do farol com área protegida por fita" loading="lazy" decoding="async" style="object-position:center 40%"><figcaption class="tag dark">No processo</figcaption></figure>
     </div>
-    <div class="facts rv"><div><b>O problema</b>Acrílico fosco e amarelado pelo sol.</div><div><b>O que foi feito</b>Lixamento, polimento e lustro dos faróis.</div><div><b>O resultado</b>Farol cristal e pintura espelhada.</div></div>
+    <div class="acts rv">
+      <a class="btn or" href="https://www.instagram.com/venezaesteticacar" target="_blank" rel="noopener">Ver vídeos no Instagram</a>
+      <a class="btn out" href="https://www.tiktok.com/@venezaesteticacar" target="_blank" rel="noopener">Ver vídeos no TikTok</a>
+    </div>
   </div>
 </section>
 
 <section class="price" id="precos">
   <div class="wrap">
-    <div class="sh rv"><span class="tag">Preços</span><h2 class="big">Tabela clara, sem surpresa.</h2><p>Valores de referência para polimento comercial. O orçamento final depende do tamanho e do estado do carro.</p></div>
-    <div class="grid2">
-      <div class="box rv"><h3>Polimentos <small>Por etapa</small></h3>
-        <div class="it"><div><b>Polimento de corte</b><small>1ª etapa: nivela o verniz e tira os riscos.</small></div><span class="pr">R$ 280</span></div>
-        <div class="it"><div><b>Polimento de refino</b><small>2ª etapa: remove as marcas do corte.</small></div><span class="pr">R$ 230</span></div>
-        <div class="it"><div><b>Lustro espelhamento</b><small>3ª etapa: brilho profundo.</small></div><span class="pr">R$ 180</span></div>
-        <div class="it hot"><div><b>Polimento completo</b><small>As três etapas juntas.</small></div><span class="pr">R$ 650</span></div>
-      </div>
-      <div class="box rv"><h3>Pacotes <small>Completo</small></h3>
-        <div class="it"><div><b>Brilho rápido</b><small>Lavagem técnica, aspiração, painel, portas e cera rápida.</small></div><span class="pr">R$ 120</span></div>
-        <div class="it"><div><b>Interior limpo</b><small>Higienização interna.</small></div><span class="pr">R$ 150</span></div>
-        <div class="it"><div><b>Pacote espelho</b><small>Mais brilho e proteção.</small></div><span class="pr">R$ 300</span></div>
-        <div class="it hot"><div><b>Pacote diamante</b><small>Tratamento completo, alto brilho e proteção.</small></div><span class="pr">R$ 550</span></div>
-        <div class="it"><div><b>Vitrificado top de linha</b><small>Finalização premium, máxima proteção.</small></div><span class="pr">R$ 850</span></div>
-      </div>
-      <div class="box rv"><h3>Faróis <small>O par</small></h3>
-        <div class="it"><div><b>Polimento de faróis</b><small>Melhora o aspecto e a luminosidade.</small></div><span class="pr">R$ 100</span></div>
-        <div class="it hot"><div><b>Polimento + vitrificação</b><small>Proteção e brilho por muito mais tempo.</small></div><span class="pr">R$ 180</span></div>
-      </div>
-      <div class="box rv"><h3>Limpeza interna <small>Pequeno · grande</small></h3>
-        <div class="it"><div><b>Simples</b><small>Higienização leve.</small></div><span class="pr">100–140 <small>pequeno</small><br>150–180 <small>grande</small></span></div>
-        <div class="it"><div><b>Detalhada</b><small>Higienização completa.</small></div><span class="pr">200–300 <small>pequeno</small><br>300–400 <small>grande</small></span></div>
-      </div>
+    <div class="sh rv"><span class="tag">Preços</span><h2 class="big">Tabela clara, sem surpresa.</h2><p>Toque em Agendar e o serviço já vai selecionado na agenda. O valor final é confirmado no orçamento, conforme o tamanho e o estado do carro.</p></div>
+    <div class="tabs" role="tablist" aria-label="Catálogo">
+      <button role="tab" id="t-polimento" aria-controls="p-polimento" aria-selected="true">Polimento</button>
+      <button role="tab" id="t-vitrificacao" aria-controls="p-vitrificacao" aria-selected="false">Vitrificação</button>
+      <button role="tab" id="t-higienizacao" aria-controls="p-higienizacao" aria-selected="false">Higienização</button>
+      <button role="tab" id="t-farois" aria-controls="p-farois" aria-selected="false">Faróis</button>
+      <button role="tab" id="t-adicionais" aria-controls="p-adicionais" aria-selected="false">Adicionais</button>
+      <button role="tab" id="t-pacotes" aria-controls="p-pacotes" aria-selected="false">Pacotes -10%</button>
     </div>
-    <p class="note rv"><span class="tag">Lojistas</span>Concessionárias e lojas têm condição especial por volume.</p>
+    <!--CAT--><div class="panel" id="p-polimento" role="tabpanel" aria-labelledby="t-polimento">
+<div class="box"><h3>Polimento <small>Do mais completo ao mais simples</small></h3>
+<div class="it"><div class="it-txt"><b>Polimento de repintura</b><small>Para pintura que precisa de recuperação mais profunda.</small><ul><li>Lixamento técnico</li><li>Corte, refino e lustro</li><li>Proteção com vitrificador, de pelo menos 1 ano</li><li>Revitalização de plásticos e vitrificação</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras, com remoção de encardidos nos cantos (para-choque dianteiro, tampa traseira e laterais das portas, se houver)</li></ul></div><div class="it-pr"><span class="pr">R$ 3.859,90</span><button type="button" class="ag" data-svc="Polimento de repintura">Agendar</button></div></div>
+<div class="it hot"><div class="it-txt"><b>Polimento técnico completo</b><small>O mais completo: polimento detalhado em todo o carro, com vitrificação inclusa.</small><ul><li>Polimento técnico premium em todas as laterais</li><li>Polimento detalhado com mini politriz profissional, que alcança os cantinhos como maçanetas e entradas de porta</li><li>Correção de riscos superficiais</li><li>Vitrificador na pintura, com proteção de pelo menos 6 meses a 1 ano</li><li>Revitalização de plásticos e vitrificação</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras, com remoção de encardidos nos cantos (para-choque dianteiro, tampa traseira e laterais das portas, se houver)</li></ul></div><div class="it-pr"><span class="pr">R$ 1.339,00</span><button type="button" class="ag" data-svc="Polimento técnico completo">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Polimento técnico em 2 etapas</b><small>Corte e refino para tirar riscos e marcas.</small><ul><li>Polimento detalhado nas maçanetas das portas</li><li>Limpeza de emblemas e remoção de encardidos em áreas localizadas, como cantos de borrachas, de letras e de emblemas</li><li>Revitalização de plásticos com condicionador de plásticos</li><li>Limpeza e higienização dos pneus, com condicionador de pneus</li><li>Proteção com selante, de 4 a 6 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 899,90</span><button type="button" class="ag" data-svc="Polimento técnico em 2 etapas">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Polimento de refino</b><small>Mais brilho e uniformidade na pintura.</small><ul><li>Limpeza e higienização dos pneus</li><li>Condicionador de pneus de alta performance</li><li>Proteção com selante sintético, de pelo menos 4 a 6 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 699,90</span><button type="button" class="ag" data-svc="Polimento de refino">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Polimento comercial</b><small>Somente o polimento comercial. Sem detalhamento.</small><ul><li>Limpeza e higienização dos pneus</li><li>Proteção com cera de carnaúba, de pelo menos 3 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 528,90</span><button type="button" class="ag" data-svc="Polimento comercial">Agendar</button></div></div>
+<p class="var">O valor pode variar em até 30%, conforme o tamanho do veículo e o verniz.</p></div>
+<div class="verniz"><h3>Verniz macio e verniz duro</h3><p>O verniz é a camada transparente que protege a cor da pintura. Cada fabricante usa um verniz diferente, e isso muda o trabalho de polimento.</p><div class="vz2"><div><b>Verniz macio</b><em>Exemplo: Honda Civic.</em><p>Em geral, risca com mais facilidade e fica com microriscos de lavagem. Em compensação, é mais rápido de polir e responde bem ao polimento.</p></div><div><b>Verniz duro</b><em>Exemplo: BMW.</em><p>Em geral, resiste melhor a riscos e a manchas. Em compensação, o polimento é mais demorado e exige mais corte e mais cuidado para remover as marcas.</p></div></div><p>Por isso o valor pode variar em até 30% conforme o verniz do carro. Essa é uma regra geral, e cada modelo e ano pode ter diferenças. Avaliamos o seu carro antes de fechar o orçamento.</p></div>
+<details class="info"><summary>Informações importantes sobre os polimentos</summary><ul><li>O polimento corrige riscos leves e superficiais. Riscos profundos, que passam do verniz, podem ficar menos visíveis, mas não desaparecem só com polimento.</li><li>O resultado depende do estado da pintura. Pintura muito desgastada, com pouco verniz ou com repintura mal feita pode limitar o resultado. Avaliamos o carro antes e avisamos no orçamento.</li><li>O tempo de proteção (cera, selante ou vitrificador) é uma estimativa e não é garantia. Ele depende de sol, chuva, tipo de lavagem e cuidados com o carro.</li><li>Para a proteção durar mais, lave o carro com shampoo neutro e evite produtos fortes.</li><li>O valor final é confirmado no orçamento, conforme o tamanho e o estado do carro.</li></ul></details>
+</div>
+<div class="panel" id="p-vitrificacao" role="tabpanel" aria-labelledby="t-vitrificacao" hidden>
+<div class="box"><h3>Vitrificação <small>Valor da aplicação</small></h3>
+<div class="it hot"><div class="it-txt"><b>Sonax Profiline CC36</b><small>Durabilidade: até 3 anos, com revisão anual</small><ul><li>Manutenção com selante sintético: só a cada 6 meses (2 vezes por ano). A 1ª manutenção está inclusa no pacote.</li></ul></div><div class="it-pr"><span class="pr">R$ 2.100,00</span><button type="button" class="ag" data-svc="Vitrificação: Sonax Profiline CC36">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Ceramic Pro</b><small>Durabilidade: de 2 a 5 anos, conforme o número de camadas</small><ul><li>Manutenção com selante sintético: a cada 3 a 6 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 1.890,00</span><button type="button" class="ag" data-svc="Vitrificação: Ceramic Pro">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Carpro CQuartz</b><small>Durabilidade: até 2 anos</small><ul><li>Manutenção com selante sintético: a cada 3 a 6 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 1.790,00</span><button type="button" class="ag" data-svc="Vitrificação: Carpro CQuartz">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Gyeon Q² Mohs</b><small>Durabilidade: de 2 a 3 anos</small><ul><li>Manutenção com selante sintético: a cada 3 a 6 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 1.590,00</span><button type="button" class="ag" data-svc="Vitrificação: Gyeon Q² Mohs">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Vonixx V-Paint</b><small>Durabilidade: até 2 anos</small><ul><li>Manutenção com selante sintético: a cada 30 a 45 dias</li></ul></div><div class="it-pr"><span class="pr">R$ 850,00</span><button type="button" class="ag" data-svc="Vitrificação: Vonixx V-Paint">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Alcance VX45</b><small>Durabilidade: até 3 anos</small><ul><li>Manutenção com selante sintético: a cada 2 a 3 meses</li></ul></div><div class="it-pr"><span class="pr">R$ 690,00</span><button type="button" class="ag" data-svc="Vitrificação: Alcance VX45">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Vonixx Sinergy Paint</b><small>Durabilidade: até 12 meses</small><ul><li>Manutenção com selante sintético: a cada 45 dias</li></ul></div><div class="it-pr"><span class="pr">R$ 450,00</span><button type="button" class="ag" data-svc="Vitrificação: Vonixx Sinergy Paint">Agendar</button></div></div>
+</div>
+<div class="box"><h3>Manutenção da vitrificação <small>Com selante sintético</small></h3>
+<div class="it"><div class="it-txt"><b>Manutenção simples</b><ul><li>Lavagem detalhada</li><li>Selante sintético para vitrificação</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras</li></ul></div><div class="it-pr"><span class="pr">R$ 250,00</span><button type="button" class="ag" data-svc="Manutenção de vitrificação: simples">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Manutenção completa</b><ul><li>Lavagem detalhada</li><li>Descontaminação leve, se precisar</li><li>Selante sintético para vitrificação</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras</li></ul></div><div class="it-pr"><span class="pr">R$ 370,00</span><button type="button" class="ag" data-svc="Manutenção de vitrificação: completa">Agendar</button></div></div>
+</div>
+<details class="info"><summary>Informações importantes sobre a vitrificação</summary><ul><li>O valor final é confirmado no orçamento, conforme o tamanho e o estado do carro.</li><li>O tempo de proteção é uma estimativa e não é garantia. Ele depende do produto, do sol, da chuva e dos cuidados com o carro.</li><li>A manutenção periódica com selante sintético para vitrificação mantém o brilho, a repelência à água e a duração da proteção. Sem a manutenção, o tempo de proteção pode ser menor.</li><li>No Sonax Profiline CC36, a 1ª manutenção está inclusa no pacote. Nos demais vitrificadores, a manutenção é cobrada à parte.</li><li>Para a proteção durar mais, lave o carro com shampoo neutro e evite produtos fortes.</li></ul></details>
+</div>
+<div class="panel" id="p-higienizacao" role="tabpanel" aria-labelledby="t-higienizacao" hidden>
+<div class="box"><h3>Higienização <small>Todas com finalização premium</small></h3>
+<div class="it hot"><div class="it-txt"><b>Higienização premium</b><small>O pacote mais completo, com vitrificação de plásticos.</small><ul><li>Tudo da higienização completa</li><li>Higienização do teto e do porta-malas</li><li>Hidratação dos bancos de couro, se houver</li><li>Vitrificação de plásticos</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras</li></ul></div><div class="it-pr"><span class="pr">R$ 589,90</span><button type="button" class="ag" data-svc="Higienização premium">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Higienização completa</b><small>Limpeza profunda dos bancos e carpetes.</small><ul><li>Tudo da higienização básica</li><li>Higienização dos bancos</li><li>Higienização dos carpetes</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras</li></ul></div><div class="it-pr"><span class="pr">R$ 389,90</span><button type="button" class="ag" data-svc="Higienização completa">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Higienização básica</b><small>Limpeza geral do interior do carro.</small><ul><li>Aspiração completa</li><li>Limpeza de painel, portas e console</li><li>Limpeza dos vidros internos</li><li>Limpeza dos tapetes</li><li>Finalização premium: limpeza de pneus, condicionador de pneus de alta performance e limpeza de emblemas e letras</li></ul></div><div class="it-pr"><span class="pr">R$ 249,90</span><button type="button" class="ag" data-svc="Higienização básica">Agendar</button></div></div>
+<p class="var">O valor pode ser alterado em até 45%, dependendo da avaliação do profissional e do estado do veículo.</p></div>
+<details class="info"><summary>Informações importantes sobre a higienização</summary><ul><li>O valor pode ser alterado em até 45%, dependendo da avaliação do profissional e do estado do veículo.</li><li>O valor final é confirmado no orçamento, conforme o tamanho do veículo e o nível de sujeira.</li><li>Manchas antigas e odores muito fortes podem não sair por completo. Avaliamos o carro antes e avisamos no orçamento.</li></ul></details>
+</div>
+<div class="panel" id="p-farois" role="tabpanel" aria-labelledby="t-farois" hidden>
+<div class="box"><h3>Faróis com amarelamento leve <small>O par</small></h3>
+<div class="it"><div class="it-txt"><b>Restauração com polimento</b></div><div class="it-pr"><span class="pr">R$ 250,00</span><button type="button" class="ag" data-svc="Faróis (amarelamento leve): polimento">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Restauração com verniz de polímero</b></div><div class="it-pr"><span class="pr">R$ 259,90</span><button type="button" class="ag" data-svc="Faróis (amarelamento leve): verniz de polímero">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Restauração com vitrificação</b></div><div class="it-pr"><span class="pr">R$ 297,90</span><button type="button" class="ag" data-svc="Faróis (amarelamento leve): vitrificação">Agendar</button></div></div>
+</div>
+<div class="box"><h3>Faróis craquelados <small>O par</small></h3>
+<div class="it"><div class="it-txt"><b>Restauração com polimento</b></div><div class="it-pr"><span class="pr">R$ 449,90</span><button type="button" class="ag" data-svc="Faróis (craquelados): polimento">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Restauração com verniz de polímero</b></div><div class="it-pr"><span class="pr">R$ 499,00</span><button type="button" class="ag" data-svc="Faróis (craquelados): verniz de polímero">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Restauração com vitrificação</b></div><div class="it-pr"><span class="pr">R$ 539,90</span><button type="button" class="ag" data-svc="Faróis (craquelados): vitrificação">Agendar</button></div></div>
+</div>
+<details class="info"><summary>Informações importantes sobre os faróis</summary><ul><li>O valor final é confirmado no orçamento, conforme o estado dos faróis.</li><li>O tempo de duração do resultado é uma estimativa e não é garantia. Ele depende do sol, da chuva e dos cuidados com o carro.</li></ul></details>
+</div>
+<div class="panel" id="p-adicionais" role="tabpanel" aria-labelledby="t-adicionais" hidden>
+<div class="box"><h3>Adicionais <small>Só se você quiser</small></h3>
+<div class="it"><div class="it-txt"><b>Remoção de chuva ácida</b><small>Em todos os vidros</small></div><div class="it-pr"><span class="pr">R$ 250,00</span><button type="button" class="ag" data-svc="Remoção de chuva ácida">Agendar</button></div></div>
+<div class="it"><div class="it-txt"><b>Cristalização de vidros</b><small>Proteção que dura em média de 2 a 3 meses</small></div><div class="it-pr"><span class="pr">R$ 150,00</span><button type="button" class="ag" data-svc="Cristalização de vidros">Agendar</button></div></div>
+<div class="it hot"><div class="it-txt"><b>Combo: remoção de chuva ácida + cristalização</b><small>Você economiza R$ 100,00 em relação a contratar separado</small></div><div class="it-pr"><span class="pr">R$ 300,00</span><button type="button" class="ag" data-svc="Combo: remoção de chuva ácida + cristalização">Agendar</button></div></div>
+<p class="var">Valem para todos os polimentos e não estão inclusos nos valores acima.</p></div>
+<details class="info"><summary>Informações importantes sobre os adicionais</summary><ul><li>A remoção de chuva ácida limpa as marcas que já estão no vidro. Ela não é uma proteção, e novas marcas podem aparecer com chuva, sol e água dura.</li><li>A cristalização dura em média de 2 a 3 meses. Pode durar menos se o carro ficar muito exposto ao sol, se o limpador de para-brisa for muito usado, em chuvas fortes ou com lavagens feitas com produtos fortes.</li><li>No combo, a remoção limpa e a cristalização protege, para as marcas não voltarem tão rápido.</li><li>Riscos e microrriscos que já existem no vidro, principalmente onde a palheta do limpador passa, podem ficar mais visíveis depois da limpeza. Avisamos no orçamento.</li><li>Os prazos de duração são estimativas e não são garantia, porque dependem do uso e dos cuidados com o carro.</li></ul></details>
+</div>
+<div class="panel" id="p-pacotes" role="tabpanel" aria-labelledby="t-pacotes" hidden><div class="packs">
+<div class="pack"><h3>Pacote Essencial</h3><ul><li><span>Polimento comercial</span><span>R$ 528,90</span></li><li><span>Vitrificação Vonixx Sinergy Paint</span><span>R$ 450,00</span></li><li><span>Higienização básica</span><span>R$ 249,90</span></li><li><span>Faróis (amarelamento leve), polimento</span><span>R$ 250,00</span></li></ul><p class="pack-sum">Soma dos serviços <s>R$ 1.478,80</s></p><p class="pack-final">R$ 1.330,92</p><p class="pack-eco">Você economiza R$ 147,88 (10%)</p><button type="button" class="ag" data-svc="Pacote Essencial">Agendar</button></div>
+<div class="pack"><h3>Pacote Intermediário</h3><ul><li><span>Polimento de refino</span><span>R$ 699,90</span></li><li><span>Vitrificação Alcance VX45</span><span>R$ 690,00</span></li><li><span>Higienização completa</span><span>R$ 389,90</span></li><li><span>Faróis (amarelamento leve), verniz de polímero</span><span>R$ 259,90</span></li></ul><p class="pack-sum">Soma dos serviços <s>R$ 2.039,70</s></p><p class="pack-final">R$ 1.835,73</p><p class="pack-eco">Você economiza R$ 203,97 (10%)</p><button type="button" class="ag" data-svc="Pacote Intermediário">Agendar</button></div>
+<div class="pack hot"><h3>Pacote Premium</h3><ul><li><span>Polimento técnico em 2 etapas</span><span>R$ 899,90</span></li><li><span>Vitrificação Sonax Profiline CC36</span><span>R$ 2.100,00</span></li><li><span>Higienização premium</span><span>R$ 589,90</span></li><li><span>Faróis craquelados, vitrificação</span><span>R$ 539,90</span></li></ul><p class="pack-sum">Soma dos serviços <s>R$ 4.129,70</s></p><p class="pack-final">R$ 3.716,73</p><p class="pack-eco">Você economiza R$ 412,97 (10%)</p><button type="button" class="ag" data-svc="Pacote Premium">Agendar</button></div>
+</div><p class="var">Os valores seguem as variações de cada serviço (tamanho do veículo, verniz e estado do carro) e são confirmados no orçamento. O desconto de 10% vale sobre a soma.</p></div><!--/CAT-->
   </div>
 </section>
 
@@ -374,14 +471,15 @@ footer a:hover{color:var(--or)}
   <div class="wrap acid">
     <div class="rv">
       <span class="tag">Chuva ácida</span>
-      <h2 class="big" style="font-size:clamp(40px,5.6vw,70px);margin-top:18px">A mancha que <span class="or">não sai</span> na lavagem.</h2>
-      <p class="lead" style="color:var(--mut)">A água evapora, o mineral fica e o sol grava a marca no verniz. Quanto antes tratar, menos verniz precisa sair.</p>
+      <h2 class="big" style="font-size:clamp(32px,5.6vw,70px);margin-top:18px">A mancha que <span class="or">não sai</span> na lavagem.</h2>
+      <p class="lead" style="color:var(--mut)">A água evapora, o mineral fica e o sol grava a marca no verniz e no vidro. Quanto antes tratar, menos verniz precisa sair.</p>
       <ol>
         <li><span><b>Avaliação com luz</b>para ver a profundidade de cada marca.</span></li>
         <li><span><b>Descontaminação</b>da pintura e dos vidros.</span></li>
         <li><span><b>Polimento na medida</b>só o verniz necessário, sem desgastar à toa.</span></li>
         <li><span><b>Proteção</b>para a água escorrer e não marcar de novo.</span></li>
       </ol>
+      <div class="acts"><a class="btn or" href="#precos" data-tab="adicionais">Remoção de chuva ácida nos vidros</a></div>
     </div>
     <div class="diagram rv">
       <svg viewBox="0 0 600 300" role="img" aria-label="Corte da pintura: verniz com marcas de chuva ácida e depois nivelado pelo polimento">
@@ -401,111 +499,56 @@ footer a:hover{color:var(--or)}
   </div>
 </section>
 
-<section class="call" id="agenda">
-  <div class="wrap rv">
-    <span class="tag dark">Agenda aberta</span>
-    <h2 class="big" style="margin-top:22px">Bora deixar<br>espelhado?</h2>
-    <p>Manda umas fotos do carro e o endereço. A gente responde com o orçamento e o melhor horário.</p>
-    <div class="acts">
-      <a class="btn blk" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-      <a class="btn ghost-dk" href="https://www.instagram.com/venezaesteticacar/" target="_blank" rel="noopener">@venezaesteticacar</a>
+<section id="sobre">
+  <div class="wrap about">
+    <div class="rv">
+      <span class="tag">Sobre a Veneza</span>
+      <h2 class="big" style="font-size:clamp(32px,5.6vw,70px);margin-top:18px">A estética <span class="or">sem sair de casa.</span></h2>
+      <p class="lead">A Veneza Estética Car cuida do seu carro com atenção a cada detalhe, produtos de qualidade e atendimento de confiança. Não temos loja física: levamos o serviço até a sua casa, sem você precisar sair com o carro.</p>
+      <div class="social">
+        <a class="btn out" href="https://www.instagram.com/venezaesteticacar" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn out" href="https://www.tiktok.com/@venezaesteticacar" target="_blank" rel="noopener">TikTok</a>
+        <a class="btn out" href="https://www.youtube.com/@venezaesteticacar" target="_blank" rel="noopener">YouTube</a>
+      </div>
     </div>
-    <div class="places"><span>Casa e condomínio</span><span>Empresa</span><span>Concessionárias</span><span>Sumaré e região</span></div>
+    <div class="facts3 rv">
+      <div><b>Onde atendemos</b>Em domicílio: vamos até a casa do cliente. Não temos loja física.</div>
+      <div><b>Horários</b>Com hora marcada, das 8h às 17h, pela agenda abaixo.</div>
+      <div><b>Telefone</b><a href="https://wa.me/5519990150008" target="_blank" rel="noopener">(19) 99015-0008</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="call" id="agenda">
+  <div class="wrap">
+    <div class="rv">
+      <span class="tag dark">Agenda aberta</span>
+      <h2 class="big" style="margin-top:22px">Agende seu<br>orçamento.</h2>
+      <p>Escolha o serviço, o dia e o horário. Ao enviar, abrimos o WhatsApp com tudo preenchido para confirmarmos com você.</p>
+    </div>
+    <form class="form rv" id="form">
+      <label class="full">Serviço<select name="servico" id="servico" required><!--SEL--><option value="">Selecione</option><option>Lavagem detalhada</option><option>Polimento de repintura</option><option>Polimento técnico completo</option><option>Polimento técnico em 2 etapas</option><option>Polimento de refino</option><option>Polimento comercial</option><option>Vitrificação: Sonax Profiline CC36</option><option>Vitrificação: Ceramic Pro</option><option>Vitrificação: Carpro CQuartz</option><option>Vitrificação: Gyeon Q² Mohs</option><option>Vitrificação: Vonixx V-Paint</option><option>Vitrificação: Alcance VX45</option><option>Vitrificação: Vonixx Sinergy Paint</option><option>Manutenção de vitrificação: simples</option><option>Manutenção de vitrificação: completa</option><option>Higienização premium</option><option>Higienização completa</option><option>Higienização básica</option><option>Pacote Essencial</option><option>Pacote Intermediário</option><option>Pacote Premium</option><option>Limpeza de motor</option><option>Faróis (amarelamento leve): polimento</option><option>Faróis (amarelamento leve): verniz de polímero</option><option>Faróis (amarelamento leve): vitrificação</option><option>Faróis (craquelados): polimento</option><option>Faróis (craquelados): verniz de polímero</option><option>Faróis (craquelados): vitrificação</option><!--/SEL--></select></label>
+      <label class="full">Adicional opcional (só se desejar)<select name="adicional"><!--ADI--><option>Nenhum</option><option>Remoção de chuva ácida</option><option>Cristalização de vidros</option><option>Combo: remoção de chuva ácida + cristalização</option><!--/ADI--></select></label>
+      <label>Dia<input type="date" name="dia" id="dia" required></label>
+      <label>Horário<select name="hora" required><option value="">Selecione</option><option>8:00</option><option>9:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select></label>
+      <label class="full">Seu nome<input name="nome" autocomplete="name" required></label>
+      <label class="full">Endereço do atendimento<input name="endereco" autocomplete="street-address" required></label>
+      <label class="full">Observações (modelo do carro, detalhes)<textarea name="obs"></textarea></label>
+      <button class="btn or" type="submit">Enviar pedido pelo WhatsApp</button>
+      <small>Prefere falar direto? <a href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20na%20Veneza%20Est%C3%A9tica%20Car." target="_blank" rel="noopener">Chame no WhatsApp</a></small>
+    </form>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Veneza Estética Car · Sumaré-SP · (19) 99015-0008</span>
-    <span>Modelo 3D da abertura: Ferrari 458 Italia por <a href="https://sketchfab.com/models/57bf6cc56931426e87494f554df1dab6" target="_blank" rel="noopener">vicent091036</a> · Site por <a href="https://www.hgsdev.com.br" target="_blank" rel="noopener">HGS Dev</a></span>
+    <span>© 2026 Veneza Estética Car · Sumaré-SP · (19) 99015-0008</span>
+    <span><a href="https://www.instagram.com/venezaesteticacar" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@venezaesteticacar" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.youtube.com/@venezaesteticacar" target="_blank" rel="noopener">YouTube</a> · Site por <a href="https://www.hgsdev.com.br" target="_blank" rel="noopener">HGS Dev</a></span>
   </div>
 </footer>
 
 <a class="wa" href="https://wa.me/5519990150008?text=Ol%C3%A1!%20Quero%20agendar%20um%20servi%C3%A7o." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></a>
 
-<script>
-// intro: 3D car being polished, driven by intro3d.js through window.vzIntro
-const intro=document.getElementById('intro');
-let ended=false;
-function endIntro(){if(ended)return;ended=true;scrollTo(0,0);intro.classList.add('out');document.body.classList.remove('lock');reveal();startVideo();autoPolish(900);setTimeout(()=>intro.remove(),1200)}
-if(!window.vzWant){intro.remove();document.body.classList.remove('lock');addEventListener('DOMContentLoaded',()=>{reveal();startVideo();autoPolish(600)})}
-else{
-  try{sessionStorage.setItem('vz-intro','1')}catch(e){}
-  history.scrollRestoration='manual';scrollTo(0,0);
-  document.getElementById('skip').onclick=endIntro;
-  const steps=[...intro.querySelectorAll('.steps>span')],cap=document.getElementById('cap'),bar=document.getElementById('bar');
-  let safety=setTimeout(endIntro,8000); // model too slow to arrive: skip straight to the site
-  window.vzIntro={
-    el:intro,endIntro,isEnded:()=>ended,
-    progress:p=>{bar.style.width=Math.min(100,p*100)+'%';clearTimeout(safety);safety=setTimeout(endIntro,4000)},
-    phase:(i,text)=>{steps.forEach((s,k)=>{s.classList.toggle('on',k===i);s.classList.toggle('done',k<i)});cap.classList.add('swap');setTimeout(()=>{cap.textContent=text;cap.classList.remove('swap')},300)}
-  };
-}
-
-// hero video: loads only after the intro, and pauses when scrolled away
-const heroVid=document.getElementById('heroVid');
-function startVideo(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  new IntersectionObserver(([e])=>{if(e.isIntersecting)heroVid.play().catch(()=>{});else heroVid.pause()}).observe(heroVid);
-}
-
-// headline: dusty letters that turn glossy where the cursor (or finger) polishes them
-const hsvg=document.getElementById('hsvg'),dull=document.getElementById('dull'),shiny=document.getElementById('shiny'),dots=document.getElementById('pmDots'),hint=document.getElementById('hint');
-const NS='http://www.w3.org/2000/svg';
-let lastPt=null,dotCount=0,autoRunning=false;
-function layoutHeadline(){
-  const lines=[['Do fosco'],['ao'],['espelho.',1]];
-  [dull,shiny].forEach((g,gi)=>{g.textContent='';lines.forEach(([l,accent],i)=>{const t=document.createElementNS(NS,'text');t.setAttribute('x',0);t.setAttribute('y',130+i*134);t.textContent=l;if(gi)t.setAttribute('fill',accent?'url(#glossOr)':'url(#gloss)');g.appendChild(t)})});
-  const b=dull.getBBox();
-  hsvg.setAttribute('viewBox',`${b.x-6} ${b.y} ${b.width+24} ${b.height}`);
-}
-function polishAt(x,y){
-  if(lastPt&&Math.hypot(x-lastPt[0],y-lastPt[1])<14)return;
-  lastPt=[x,y];
-  const c=document.createElementNS(NS,'circle');
-  c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',85);c.setAttribute('fill','url(#soft)');
-  dots.appendChild(c);
-  if(++dotCount>900)dots.firstChild.remove();
-}
-function toSvg(e){const p=hsvg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(hsvg.getScreenCTM().inverse())}
-hsvg.addEventListener('pointermove',e=>{const p=toSvg(e);polishAt(p.x,p.y);hint.style.opacity=0});
-function autoPolish(delay){
-  if(autoRunning)return;
-  autoRunning=true;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){fullShine();return}
-  setTimeout(()=>{
-    const vb=hsvg.viewBox.baseVal,rows=3,dur=2800,t0=performance.now();
-    (function step(now){
-      const t=Math.min(1,(now-t0)/dur),rt=t*rows,row=Math.min(rows-1,Math.floor(rt)),p=rt-row,px=row%2?1-p:p;
-      const x=vb.x+px*vb.width*.8,y=vb.y+(row+.5)/rows*vb.height+Math.sin(t*40)*18;
-      lastPt=null;polishAt(x,y);polishAt(x,y-40);polishAt(x,y+40);
-      if(t<1)requestAnimationFrame(step);
-    })(t0);
-  },delay);
-}
-function fullShine(){const vb=hsvg.viewBox.baseVal;const r=document.createElementNS(NS,'rect');r.setAttribute('x',vb.x);r.setAttribute('y',vb.y);r.setAttribute('width',vb.width);r.setAttribute('height',vb.height);r.setAttribute('fill','#fff');dots.appendChild(r)}
-layoutHeadline();
-document.fonts&&document.fonts.ready.then(layoutHeadline);
-if(matchMedia('(hover: none)').matches)hint.innerHTML='<b>Teste</b> arraste o dedo no título para polir';
-
-// reveal on scroll
-function reveal(){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-}
-
-// nav
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
-
-// acid rain diagram: before / after polishing
-const clear=document.getElementById('clear'),lvlTxt=document.getElementById('lvlTxt');
-const shapes=[clear.getAttribute('d'),'M0 146 L0 112 L70 112 Q85 112 92 112 Q100 112 108 112 Q115 112 130 112 L250 112 Q262 112 268 112 Q276 112 284 112 Q290 112 302 112 L430 112 Q445 112 452 112 Q460 112 468 112 Q475 112 490 112 L600 112 L600 146 Z'];
-document.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.toggle button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  const s=+b.dataset.s;clear.setAttribute('d',shapes[s]);clear.style.d=`path("${shapes[s]}")`;
-  lvlTxt.textContent=s?'Verniz nivelado':'Marcas de gota';
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>

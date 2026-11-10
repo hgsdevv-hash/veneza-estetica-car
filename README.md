@@ -1,12 +1,22 @@
 # Veneza Estética Car
 
-Site estático (GitHub Pages). A abertura 3D fica em `src/intro3d.js` e é empacotada em `intro3d.min.js`:
+Site estático (GitHub Pages): https://hgsdevv-hash.github.io/veneza-estetica-car/
+Local: preview "veneza" (porta 5690).
+
+## Abertura
+Em `main.js`, desenhada em canvas: um carro laranja passa em alta pelo asfalto, derrapa, deixa a marca dos pneus e a fumaça, e a logo aparece sobre as marcas. Roda a cada carregamento (cerca de 2 segundos), com botão Pular.
+
+## Preços e catálogo
+Os dados vêm do HTML que o cliente mandou em 10/11/2026. Ficam em `src/catalogo.py`, que gera o catálogo em abas (polimento, vitrificação, higienização, faróis, adicionais e pacotes com 10%) e as opções da agenda. Para mudar um preço, edite o arquivo e rode:
 
 ```bash
-npm i three@0.165.0 esbuild@0.21.5
-npx esbuild src/intro3d.js --bundle --minify --format=esm --target=es2022 --outfile=intro3d.min.js
+python src/catalogo.py
 ```
 
-Para ver um momento específico da abertura: `?t=4` (segundos). A abertura só aparece uma vez por sessão.
+O botão Agendar de cada item já seleciona o serviço na agenda, que abre o WhatsApp (19) 99015-0008 com o pedido preenchido.
 
-Modelo 3D: Ferrari 458 Italia por vicent091036 (Sketchfab), via exemplos do three.js.
+## Pendências
+- Fotos reais de mais carros (com placa borrada), se o cliente mandar
+- Confirmar se o atendimento é só em Sumaré ou também na região
+
+Site por HGS Dev: https://www.hgsdev.com.br
