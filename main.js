@@ -41,27 +41,53 @@ history.scrollRestoration = 'manual'; scrollTo(0, 0);
     return Math.atan2(d(1), d(0));
   };
   const L = 230 * S, Wd = 104 * S;                  // comprimento e largura do carro
+  // quanto a frente "entra" na curva: proporcional à curvatura do trajeto, limitado
+  const wrapA = a => Math.atan2(Math.sin(a), Math.cos(a));
+  const slipAt = t => Math.max(-.7, Math.min(.7, wrapA(tan(Math.min(1, t + .03)) - tan(Math.max(0, t - .03))) * 3.2));
   const marks = [[], []], smoke = [];
 
+  // carro visto de cima, frente para +x: faróis e facho de luz na frente, lanternas vermelhas atrás
   function car(x, y, ang, alpha) {
     ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.globalAlpha = alpha;
+    const hl = L / 2, hw = Wd / 2;
+    // facho dos faróis, à frente
+    if (alpha > .9) {
+      ctx.fillStyle = 'rgba(255,246,216,.10)';
+      [-1, 1].forEach(s => { ctx.beginPath(); ctx.moveTo(hl - 4 * S, s * (hw - 18 * S)); ctx.lineTo(hl + L * .9, s * (hw + 30 * S)); ctx.lineTo(hl + L * .9, s * (hw - 60 * S)); ctx.closePath(); ctx.fill(); });
+    }
     // pneus
     ctx.fillStyle = '#050505';
-    [[-.33, -.5], [-.33, .5], [.3, -.5], [.3, .5]].forEach(([u, v]) => ctx.fillRect(u * L - 18 * S, v * Wd - 9 * S, 36 * S, 18 * S));
-    // carroceria
+    [[-.3, -1], [-.3, 1], [.3, -1], [.3, 1]].forEach(([u, v]) => ctx.fillRect(u * L - 18 * S, v * hw - 9 * S, 36 * S, 18 * S));
+    // carroceria: frente mais estreita e arredondada, traseira reta
     ctx.fillStyle = '#ff6a13';
-    rr(-L / 2, -Wd / 2 + 6 * S, L, Wd - 12 * S, 34 * S); ctx.fill();
-    // faixa clara de corrida
-    ctx.fillStyle = '#f5f3ee'; ctx.fillRect(-L / 2 + 8 * S, -7 * S, L - 16 * S, 14 * S);
-    // vidros
-    ctx.fillStyle = '#101010';
-    rr(.02 * L, -Wd / 2 + 16 * S, .2 * L, Wd - 32 * S, 12 * S); ctx.fill();
-    rr(-.3 * L, -Wd / 2 + 18 * S, .14 * L, Wd - 36 * S, 10 * S); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-hl, -hw + 8 * S);
+    ctx.lineTo(hl - 34 * S, -hw + 6 * S);
+    ctx.quadraticCurveTo(hl, -hw + 12 * S, hl, -hw + 34 * S);
+    ctx.lineTo(hl, hw - 34 * S);
+    ctx.quadraticCurveTo(hl, hw - 12 * S, hl - 34 * S, hw - 6 * S);
+    ctx.lineTo(-hl, hw - 8 * S);
+    ctx.quadraticCurveTo(-hl - 6 * S, 0, -hl, -hw + 8 * S);
+    ctx.fill();
+    // duas faixas de corrida
+    ctx.fillStyle = '#f5f3ee';
+    ctx.fillRect(-hl + 6 * S, -12 * S, L - 14 * S, 7 * S); ctx.fillRect(-hl + 6 * S, 5 * S, L - 14 * S, 7 * S);
+    // para-brisa (trapézio mais largo na frente)
+    ctx.fillStyle = '#111';
+    ctx.beginPath(); ctx.moveTo(.06 * L, -hw + 20 * S); ctx.lineTo(.24 * L, -hw + 12 * S); ctx.lineTo(.24 * L, hw - 12 * S); ctx.lineTo(.06 * L, hw - 20 * S); ctx.closePath(); ctx.fill();
     // teto
-    ctx.fillStyle = '#d94f00'; rr(-.16 * L, -Wd / 2 + 14 * S, .18 * L, Wd - 28 * S, 8 * S); ctx.fill();
-    // faróis
+    ctx.fillStyle = '#e25a08'; rr(-.18 * L, -hw + 18 * S, .24 * L, Wd - 36 * S, 8 * S); ctx.fill();
+    ctx.fillStyle = '#f5f3ee'; ctx.fillRect(-.18 * L, -12 * S, .24 * L, 7 * S); ctx.fillRect(-.18 * L, 5 * S, .24 * L, 7 * S);
+    // vidro traseiro, menor
+    ctx.fillStyle = '#111';
+    ctx.beginPath(); ctx.moveTo(-.32 * L, -hw + 22 * S); ctx.lineTo(-.2 * L, -hw + 18 * S); ctx.lineTo(-.2 * L, hw - 18 * S); ctx.lineTo(-.32 * L, hw - 22 * S); ctx.closePath(); ctx.fill();
+    // retrovisores
+    ctx.fillStyle = '#ff6a13'; ctx.fillRect(.06 * L, -hw - 4 * S, 10 * S, 8 * S); ctx.fillRect(.06 * L, hw - 4 * S, 10 * S, 8 * S);
+    // faróis na frente, lanternas vermelhas atrás
     ctx.fillStyle = '#fff6d8';
-    ctx.fillRect(L / 2 - 10 * S, -Wd / 2 + 12 * S, 8 * S, 16 * S); ctx.fillRect(L / 2 - 10 * S, Wd / 2 - 28 * S, 8 * S, 16 * S);
+    ctx.fillRect(hl - 9 * S, -hw + 16 * S, 7 * S, 20 * S); ctx.fillRect(hl - 9 * S, hw - 36 * S, 7 * S, 20 * S);
+    ctx.fillStyle = '#ff1f1f';
+    ctx.fillRect(-hl - 1 * S, -hw + 12 * S, 6 * S, 22 * S); ctx.fillRect(-hl - 1 * S, hw - 34 * S, 6 * S, 22 * S);
     ctx.restore(); ctx.globalAlpha = 1;
   }
   function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
@@ -73,8 +99,8 @@ history.scrollRestoration = 'manual'; scrollTo(0, 0);
     const raw = Math.min(1, (now - t0) / DUR);
     const t = raw < .5 ? 2 * raw * raw : 1 - (-2 * raw + 2) ** 2 / 2;        // acelera, derrapa, sai
     const x = bez(t, 0), y = bez(t, 1);
-    const drift = Math.sin(Math.min(1, Math.max(0, (t - .25) / .55)) * Math.PI) * .85; // traseira escorrega na curva
-    const ang = tan(t) + drift;
+    const slip = slipAt(t), drift = Math.abs(slip);
+    const ang = tan(t) + slip;
 
     // marcas das rodas traseiras (só no chão, ficam)
     const rx = x - Math.cos(ang) * L * .33, ry = y - Math.sin(ang) * L * .33;
@@ -94,7 +120,7 @@ history.scrollRestoration = 'manual'; scrollTo(0, 0);
 
     if (raw < 1) {
       // rastro de velocidade: o carro em três posições anteriores, apagando
-      [.06, .035, .015].forEach((d, i) => { const tt = Math.max(0, t - d); car(bez(tt, 0), bez(tt, 1), tan(tt) + drift, .12 + i * .1); });
+      [.06, .035, .015].forEach((d, i) => { const tt = Math.max(0, t - d); car(bez(tt, 0), bez(tt, 1), tan(tt) + slipAt(tt), .12 + i * .1); });
       car(x, y, ang, 1);
       if (!shook && drift > .45) { shook = true; intro.classList.add('shake'); }
     } else if (!brandAt) {
